@@ -18,6 +18,12 @@ session_start();
 </head>
 
 <body>
-  <a href="export_result.php" class="export-btn">Export</a>
+  <form class="form_export" method="post" action="export_result.php">
+    <label for="start-datetime">Start datetime</label>
+    <input type="datetime-local" id="start-datetime" name="start_datetime">
+    <label for="end-datetime">End datetime</label>
+    <input type="datetime-local" id="start-datetime" name="end_datetime">
+    <input type="submit" value="Export">
+  </form>
 </body>
 </html>

@@ -24,8 +24,6 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to SQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($con, "SELECT * FROM `$table_name`");
-
 // Filter the excel data 
 function filterData(&$str){ 
   $str = preg_replace("/\t/", "\\t", $str); 
@@ -40,11 +38,19 @@ $fileName = "users-data_" . date('Y-m-d') . ".xls";
 $fields = array('ID', 'FIRST NAME', 'LAST NAME', 'EMAIL', 'LAST UPDATED');
 
 // Display column names as first row 
-$excelData = implode("\t", array_values($fields)) . "\n"; 
+$excelData = implode("\t", array_values($fields)) . "\n";
 
-// Fetch records from database 
-$query = mysqli_query($con, "SELECT * FROM `$table_name` ORDER BY id ASC");
-if($query->num_rows > 0){ 
+$startDatetime = $_POST['start_datetime'];
+$endDatetime = $_POST['end_datetime'];
+
+// Fetch records from database
+if ($startDatetime && $endDatetime) {
+  $query = mysqli_query($con, "SELECT * FROM `$table_name` WHERE last_updated BETWEEN '$startDatetime' AND '$endDatetime' ORDER BY id ASC");
+} else {
+  $query = mysqli_query($con, "SELECT * FROM `$table_name` ORDER BY id ASC");
+}
+
+if($query && $query->num_rows > 0){ 
   // Output each row of the data 
   while($row = $query->fetch_assoc()){ 
       $lineData = array($row['id'], $row['firstname'], $row['lastname'], $row['email'], $row['last_updated']); 
