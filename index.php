@@ -10,8 +10,8 @@ $dotenv->load();
 include 'parameters.php';
 
 $_SESSION["user_type"] = "new";
-$_SESSION["mac"] = $_GET["id"];
-$_SESSION["ap"] = $_GET["ap"];
+// $_SESSION["mac"] = $_GET["id"];
+// $_SESSION["ap"] = $_GET["ap"];
 
 /*
 Checking DB to see if user exists or not.
@@ -28,22 +28,23 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to SQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($con, "SELECT * FROM `$table_name` WHERE mac='$_SESSION[mac]'");
+// $result = mysqli_query($con, "SELECT * FROM `$table_name` WHERE mac='$_SESSION[mac]'");
 
-if ($result->num_rows >= 1) {
-  $row = mysqli_fetch_array($result);
+// if ($result->num_rows >= 1) {
+//   $row = mysqli_fetch_array($result);
 
-  $_SESSION["fname"] = $row[1];
-  $_SESSION["lname"] = $row[2];
-  $_SESSION["email"] = $row[3];
+//   $_SESSION["fname"] = $row[1];
+//   $_SESSION["lname"] = $row[2];
+//   $_SESSION["email"] = $row[3];
 
-  mysqli_close($con);
+//   mysqli_close($con);
 
-  $_SESSION["user_type"] = "repeat";
-  header("Location: welcome.php");
-} else {
-  mysqli_close($con);
-}
+//   $_SESSION["user_type"] = "repeat";
+//   header("Location: welcome.php");
+// } else {
+//   mysqli_close($con);
+// }
+mysqli_close($con);
 ?>
 
 <!doctype html>
