@@ -32,7 +32,7 @@ function filterData(&$str){
 } 
 
 // Excel file name for download 
-$fileName = "users-data_" . date('Y-m-d') . ".xls"; 
+$fileName = "users-data_" . date('Y-m-d') . ".xlsx";
 
 // Column names 
 $fields = array('ID', 'FIRST NAME', 'LAST NAME', 'EMAIL', 'LAST UPDATED');
