@@ -23,7 +23,7 @@ Printing a welcome message for the user
 	<div class="bg">
 
     <figure id="logo">
-        <img src="logo.png">
+        <img src="./images/logo.png">
     </figure>
 
     <br>

@@ -65,7 +65,7 @@ mysqli_close($con);
   <div class="bg">
 
     <figure id="logo">
-      <img src="logo.png">
+      <img src="./images/logo.png">
     </figure>
 
     <br>
